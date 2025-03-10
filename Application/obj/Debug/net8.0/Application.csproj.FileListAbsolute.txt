@@ -1,0 +1,11 @@
+/home/maks/RiderProjects/AdvertisingPlatformsApi/Application/bin/Debug/net8.0/Application.deps.json
+/home/maks/RiderProjects/AdvertisingPlatformsApi/Application/bin/Debug/net8.0/Application.dll
+/home/maks/RiderProjects/AdvertisingPlatformsApi/Application/bin/Debug/net8.0/Application.pdb
+/home/maks/RiderProjects/AdvertisingPlatformsApi/Application/obj/Debug/net8.0/Application.GeneratedMSBuildEditorConfig.editorconfig
+/home/maks/RiderProjects/AdvertisingPlatformsApi/Application/obj/Debug/net8.0/Application.AssemblyInfoInputs.cache
+/home/maks/RiderProjects/AdvertisingPlatformsApi/Application/obj/Debug/net8.0/Application.AssemblyInfo.cs
+/home/maks/RiderProjects/AdvertisingPlatformsApi/Application/obj/Debug/net8.0/Application.csproj.CoreCompileInputs.cache
+/home/maks/RiderProjects/AdvertisingPlatformsApi/Application/obj/Debug/net8.0/Application.dll
+/home/maks/RiderProjects/AdvertisingPlatformsApi/Application/obj/Debug/net8.0/refint/Application.dll
+/home/maks/RiderProjects/AdvertisingPlatformsApi/Application/obj/Debug/net8.0/Application.pdb
+/home/maks/RiderProjects/AdvertisingPlatformsApi/Application/obj/Debug/net8.0/ref/Application.dll

@@ -1,0 +1,6 @@
+AdvertisingPlatformsApi/bin
+AdvertisingPlatformsApi/obj/
+AdvertisingPlatformsApi/appsettings.json
+/packages/
+riderModule.iml
+/_ReSharper.Caches/
