@@ -1,0 +1,9 @@
+services:
+  advertising_platforms:
+    image: "advertising_platforms"
+    ports:
+      - "5189:8080"
+    build:
+      context: .
+      dockerfile: Dockerfile     
+   

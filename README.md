@@ -1,5 +1,5 @@
 # AdvertisingPlatforms
-# Проект тестовго задания
+# Проект тестового задания
 ## запуск (для запуска нужен docker compose)
 1. клонируем репозиторий: git clone https://github.com/MVMmaksM/AdvertisingPlatforms.git
 2. переходим в директорию AdvertisingPlatformsApi/
