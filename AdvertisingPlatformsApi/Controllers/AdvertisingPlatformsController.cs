@@ -8,7 +8,8 @@ namespace AdvertisingPlatformsApi.Controllers;
 public class AdvertisingPlatformsController
     (IAdveristingPlatformsService adveristingPlatformsServiceService, 
         IStorageService memoryStorageService,
-        IValidatorService validatorService) : ApiBaseController
+        IValidatorService validatorService,
+        ILogger<AdvertisingPlatformsController> logger) : ApiBaseController
 {
     /// <summary>
     /// метод загрузки файла
@@ -18,10 +19,16 @@ public class AdvertisingPlatformsController
     [HttpPost]
     public async Task<IActionResult> UploadPlatforms(IFormFile file)
     {
+        logger.LogInformation($"[{DateTime.Now}] url: {Url.Action()}, method: UploadPlatforms started, file: {file?.FileName}");
+        
         var lineFile = file.ReadAllLines();
-        var validateResult = validatorService.ValidateUploadFile(lineFile);
-        if(!validateResult.IsValidate)
+        var validateResult = validatorService.ValidateLinesUploadFile(lineFile);
+        
+        if (!validateResult.IsValidate)
+        {
+            logger.LogInformation($"[{DateTime.Now}] url: {Url.Action()}, method: UploadPlatforms finished, file: {file?.FileName}");
             return BadRequest(validateResult);
+        }
         
         try
         {
@@ -29,9 +36,12 @@ public class AdvertisingPlatformsController
         }
         catch (Exception e)
         {
+            logger.LogError($"[{DateTime.Now}] url: {Url.Action()}, method: UploadPlatforms, file: {file?.FileName}\n" +
+                            $" Error: {e.StackTrace}");
             return BadRequest(e.Message);
         }
         
+        logger.LogInformation($"[{DateTime.Now}] url: {Url.Action()}, method: UploadPlatforms finished, file: {file?.FileName}");
         return Ok();
     }
 
@@ -43,20 +53,28 @@ public class AdvertisingPlatformsController
     [HttpGet]
     public async Task<IActionResult> GetPlatforms(string location)
     {
+        logger.LogInformation($"[{DateTime.Now}] url: {Url.Action()}, method: GetPlatforms started, parameters: {location}");
+        
         List<string> result = null;
         var validateResult = validatorService.ValidateLocationParameter(location);
-        if(!validateResult.IsValidate)
+        if (!validateResult.IsValidate)
+        {
+            logger.LogInformation($"[{DateTime.Now}] url: {Url.Action()}, method: GetPlatforms finished, parameters: {location}");
             return BadRequest(validateResult);
-
+        }
+        
         try
         {
             result = await adveristingPlatformsServiceService.GetPlatforms(location);
         }
         catch (Exception e)
         {
+            logger.LogError($"[{DateTime.Now}] url: {Url.Action()}, method: UploadPlatforms\n" +
+                            $" Error: {e.StackTrace}");
             return BadRequest(e.Message);
         }
         
+        logger.LogInformation($"[{DateTime.Now}] url: {Url.Action()}, method: GetPlatforms finished, parameters: {location}");
         return Ok(result);
     }
 }

@@ -24,7 +24,7 @@ public class AdveristingPlatformsService(IStorageService platforms) : IAdveristi
         for (int i = 0; i < locationSplit.Length; i++)
         {
             strBuilder.Append(string.Concat("/",locationSplit[i]));
-            var platform = platforms.GetPlatforms(strBuilder.ToString());
+            var platform = platforms.GetPlatformsByLocation(strBuilder.ToString());
             
             if(platform != null)
                 result.Add(platform);

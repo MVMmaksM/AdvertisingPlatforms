@@ -16,14 +16,22 @@ public class ValidatorService : IValidatorService
     /// </summary>
     /// <param name="lineFile"></param>
     /// <returns></returns>
-    public ValidationResult ValidateUploadFile(List<string> lineFile)
+    public ValidationResult ValidateLinesUploadFile(List<string> lineFile)
     {
         var result = new ValidationResult();
+
+        if (lineFile.Where(x => string.IsNullOrWhiteSpace(x)).Any())
+        {
+            result.ErrorMessge = "В файле есть пустые строки!";
+            result.IsValidate = false;
+            return result;
+        }
 
         if (lineFile == null || lineFile.Count == 0)
         {
             result.ErrorMessge = "Файл не может быть пустым!";
             result.IsValidate = false;
+            return result;
         }
 
         for (int i = 0; i < lineFile.Count(); i++)
@@ -31,15 +39,17 @@ public class ValidatorService : IValidatorService
             var splitLine = lineFile[i].Split(":");
             if (splitLine.Length != 2)
             {
-                result.ErrorMessge += $"\nОшибка в строке: {i + 1}, строка должна содержать \"имя площадки:имя_локации,имя_локации\"";
+                result.ErrorMessge = $"\nОшибка в строке: {i + 1}, строка должна содержать \"имя площадки:имя_локации,имя_локации\"";
                 result.IsValidate = false;
+                return result;
             }
 
             var locations = splitLine[1].Split(",");
             if (locations.Length == 0)
             {
-                result.ErrorMessge += $"\nОшибка в строке: {i + 1}, не указаны лдокации";
+                result.ErrorMessge = $"\nОшибка в строке: {i + 1}, не указаны лдокации";
                 result.IsValidate = false;
+                return result;
             }
 
             foreach (var location in locations)
@@ -48,6 +58,7 @@ public class ValidatorService : IValidatorService
                 {
                     result.ErrorMessge += $"\nОшибка в строке: {i + 1}, неверно указаны имена локаций";
                     result.IsValidate = false;
+                    return result;
                 }
             }
         }

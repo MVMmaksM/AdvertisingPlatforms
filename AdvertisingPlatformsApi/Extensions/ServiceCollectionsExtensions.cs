@@ -12,6 +12,9 @@ public static class ServiceCollectionsExtensions
     /// <returns></returns>
     public static WebApplicationBuilder AddAppServices(this WebApplicationBuilder builder)
     {
+        builder.Services.AddControllers();
+        builder.Services.AddEndpointsApiExplorer();
+        builder.Services.AddSwaggerGen();
         builder.Services.AddTransient<IAdveristingPlatformsService, AdveristingPlatformsService>();
         builder.Services.AddTransient<IValidatorService, ValidatorService>();
         builder.Services.AddSingleton<IStorageService, MemoryStorageService>();

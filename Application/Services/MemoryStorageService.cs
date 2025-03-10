@@ -20,7 +20,7 @@ public class MemoryStorageService : IStorageService
     /// </summary>
     /// <param name="location"></param>
     /// <returns></returns>
-    public string? GetPlatforms(string location) =>
+    public string? GetPlatformsByLocation(string location) =>
         _advertistingPlatforms.TryGetValue(location, out var result) ? result : null;
 
     /// <summary>

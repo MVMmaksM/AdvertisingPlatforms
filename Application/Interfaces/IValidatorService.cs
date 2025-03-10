@@ -8,6 +8,6 @@ namespace Application.Interfaces;
 /// </summary>
 public interface IValidatorService
 {
-    ValidationResult ValidateUploadFile(List<string> lineFile);
+    ValidationResult ValidateLinesUploadFile(List<string> lineFile);
     ValidationResult ValidateLocationParameter(string location);
 }

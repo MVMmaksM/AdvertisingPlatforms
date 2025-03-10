@@ -6,6 +6,6 @@ namespace Application.Interfaces;
 /// </summary>
 public interface IStorageService
 {
-    string GetPlatforms(string location);
+    string GetPlatformsByLocation(string location);
     void AddPlatform(List<string> platforms);
 }
