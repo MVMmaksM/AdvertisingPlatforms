@@ -1,5 +1,7 @@
 AdvertisingPlatformsApi/bin
 AdvertisingPlatformsApi/obj/
+Application/bin
+Application/obj
 AdvertisingPlatformsApi/appsettings.json
 /packages/
 riderModule.iml
