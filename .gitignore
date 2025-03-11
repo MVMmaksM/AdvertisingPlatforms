@@ -1,8 +1,9 @@
-AdvertisingPlatformsApi/bin
+AdvertisingPlatformsApi/bin/
 AdvertisingPlatformsApi/obj/
-Application/bin
-Application/obj
+Application/bin/
+Application/obj/
 AdvertisingPlatformsApi/appsettings.json
 /packages/
 riderModule.iml
 /_ReSharper.Caches/
+.idea

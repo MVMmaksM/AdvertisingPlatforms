@@ -19,16 +19,11 @@ public class AdvertisingPlatformsController
     [HttpPost]
     public async Task<IActionResult> UploadPlatforms(IFormFile file)
     {
-        logger.LogInformation($"[{DateTime.Now}] url: {Url.Action()}, method: UploadPlatforms started, file: {file?.FileName}");
-        
         var lineFile = file.ReadAllLines();
         var validateResult = validatorService.ValidateLinesUploadFile(lineFile);
         
         if (!validateResult.IsValidate)
-        {
-            logger.LogInformation($"[{DateTime.Now}] url: {Url.Action()}, method: UploadPlatforms finished, file: {file?.FileName}");
             return BadRequest(validateResult);
-        }
         
         try
         {
@@ -41,7 +36,6 @@ public class AdvertisingPlatformsController
             return BadRequest(e.Message);
         }
         
-        logger.LogInformation($"[{DateTime.Now}] url: {Url.Action()}, method: UploadPlatforms finished, file: {file?.FileName}");
         return Ok();
     }
 
@@ -53,15 +47,10 @@ public class AdvertisingPlatformsController
     [HttpGet]
     public async Task<IActionResult> GetPlatforms(string location)
     {
-        logger.LogInformation($"[{DateTime.Now}] url: {Url.Action()}, method: GetPlatforms started, parameters: {location}");
-        
         List<string> result = null;
         var validateResult = validatorService.ValidateLocationParameter(location);
-        if (!validateResult.IsValidate)
-        {
-            logger.LogInformation($"[{DateTime.Now}] url: {Url.Action()}, method: GetPlatforms finished, parameters: {location}");
+        if (!validateResult.IsValidate) 
             return BadRequest(validateResult);
-        }
         
         try
         {
@@ -74,7 +63,6 @@ public class AdvertisingPlatformsController
             return BadRequest(e.Message);
         }
         
-        logger.LogInformation($"[{DateTime.Now}] url: {Url.Action()}, method: GetPlatforms finished, parameters: {location}");
         return Ok(result);
     }
 }
